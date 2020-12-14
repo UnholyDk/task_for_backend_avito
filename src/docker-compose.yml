@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  server:
+      build:
+          context: server/
+      image: api-service:latest
+      ports:
+        - "80:8000"
+  pytest:
+      build:
+          context: tests/
+      image: pytest:latest
+      depends_on:
+        - server
